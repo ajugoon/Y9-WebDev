@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+  <html>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+      <!---->
+      <!---->
+
+  <head> <!---------------------------------------------------------------------------------->
+  
+    <style>
+
+        .chart-container {
+        width: 500px;
+        height:400px
+        }
+
+    </style>
+    
+  </head>
+
+  <body> <!---------------------------------------------------------------------------------->
+
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <div>
+            <button onclick = "displayInfo()" >Search</button></p>
+
+            <p>Current Data:</p>
+
+            <!-- ol means ordered list -->
+            <p><ol id="locationList"></ol></p>  
+    </div>
+
+  </body> 
+
+
+  <script> //-------------------------------------------------------------------------------->
+      var ctx = document.getElementById('myChart');
+
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                label: '# of Votes',
+            
+                data: [12, 19, 3, 5, 2, 3],
+
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',   // 1st bar
+                    'rgba(54, 162, 235, 0.2)',   // 2nd bar
+                    'rgba(255, 206, 86, 0.2)',   // 3rd bar
+                    'rgba(75, 192, 192, 0.2)',   // 4th bar
+                    'rgba(153, 102, 255, 0.2)',  // 5th bar
+                    'rgba(255, 159, 64, 0.2)'    // 6th bar
+                ],
+
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+
+                borderWidth: 1
+                }]
+            },
+    
+            options: {
+            scales: {
+              yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+              }]
+            }
+
+            
+          }
+      });
+
+
+      function displayInfo() {
+
+            document.getElementById("locationList").innerHTML = "";
+
+            var myData = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+
+            //var displayLocations = JSON.stringify(childData);
+            var oListCoordinates = document.getElementById('locationList');
+            var entry = document.createElement('li'); // a list element to be added to the ordered list
+            var entry0 = document.createElement('li'); 
+            var entry1 = document.createElement('li'); 
+            var entry2 = document.createElement('li'); 
+
+            entry.appendChild(document.createTextNode(myData));
+            entry0.appendChild(document.createTextNode(myData[0]));
+            entry1.appendChild(document.createTextNode(myData[1]));
+            entry2.appendChild(document.createTextNode(myData[2]));
+            oListCoordinates.appendChild(entry);
+            oListCoordinates.appendChild(entry0);
+            oListCoordinates.appendChild(entry1);
+            oListCoordinates.appendChild(entry2);
+             
+            // jump to the helper function below...think of 'value' as the parameter that is passed
+
+      } // end getLocationCoordinates
+
+</script>
+
+</html>
+
+
